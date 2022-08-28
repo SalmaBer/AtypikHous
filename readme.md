@@ -24,6 +24,12 @@ https://www.f2i-dev14-g3-sb-aa.fr/login
 Consultation des offres:
 https://www.f2i-dev14-g3-sb-aa.fr/habitat
 
-Consultation des offres de location de voitures (partenaire):
-https://www.f2i-dev14-g3-sb-aa.fr/location
+Identifiant Admin
+Email :admin@admin.com
+Mot De Passe :12345678
+
+
+Identifiant User
+Email :user@user.com
+Mot De Passe :12345678
 
