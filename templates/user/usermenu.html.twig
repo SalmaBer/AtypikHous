@@ -1,0 +1,52 @@
+<div class="span3">
+    <aside>
+        <div class="widget">
+
+            <h4 class="rheading">Menu<span></span></h4>
+            <img src="{{ asset('myapp/uploads/images/' ~ app.user.image) }}"  alt="{{ app.user.name }}" style="height: 80px" class="img-circle">
+            {{ app.user.name }} {{ app.user.surname }}
+            <ul class="cat">
+
+                {% if app.request.get('_route') == 'user_index' %}
+                    <li><a href="/user" class="active" style="color: white;">Profile</a></li>
+                {% else %}
+                    <li><a href="/user">Profile</a></li>
+                {% endif %}
+
+
+                {% if app.request.get('_route') == 'user_hotel_index' %}
+                    <li><a href="/user/hotel" class="active"style="color: white;">Habitat</a></li>
+                {% else %}
+                    <li><a href="/user/hotel">Habitat</a></li>
+                {% endif %}
+
+
+         <!--       {% if app.request.get('_route') == 'user_chambre' %}
+                    <li><a href="/user/chambre" class="active"style="color: white;"> Chambres D'habitats</a></li>
+                {% else %}
+                    <li><a href="/user/chambre"> Chambres D'habitats</a></li>
+                {% endif %}-->
+
+
+                {% if app.request.get('_route') == 'user_comments' %}
+                    <li><a href="/user/comments" class="active"style="color: white;">les commentaires</a></li>
+                {% else %}
+                    <li><a href="/user/comments">les commentaires</a></li>
+                {% endif %}
+
+
+                {% if app.request.get('_route') == 'user_reservations' %}
+                    <li><a href="/user/reservations" class="active"style="color: white;"> Reservation</a></li>
+                {% else %}
+                    <li><a href="/user/reservations"> Reservation</a></li>
+                {% endif %}
+
+
+
+
+
+                <li><a href="/logout">Déconnexion</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>

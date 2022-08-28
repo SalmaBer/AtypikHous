@@ -1,0 +1,97 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Contact | {{setting[0].title}}{% endblock %}
+{% block keywords %}{{setting[0].keywords}}{% endblock %}
+{% block description %}{{setting[0].description}} {% endblock %}
+
+{% block body %}
+
+    <!-- Subintro
+================================================== -->
+    <section id="subintro">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <ul class="breadcrumb">
+                        <li><a href="/" style="color: white">Accueil</a><i class="icon-angle-right"></i></li>
+                        <li class="active" style="color: white">Contacter nous</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="maincontent">
+        <div class="container">
+            <div class="row">
+
+                <div class="span5">
+                    <aside>
+
+                        <h1>Formulaire de contact</h1>
+                        {{ include('messages.html.twig') }}
+
+                        <form name="messages"  method="post" role="form" class="contactForm">
+                            <div class="row">
+                                <div class="span4 form-group">
+                                    <label for="messages_name" aria-label="messages_name">Nom </label>
+                                    <input type="text" aria-label="messages_name" id="messages_name" name="messages[name]" class="input-block-level" placeholder="Saisir votre nom" data-rule="minlen:4" data-msg="Saisir au moins 4 caract�res" />
+                                    <div class="validation"></div>
+                                </div>
+
+                                <div class="span4 form-group">
+                                    <label for="messages_email" aria-label="messages_email">Email </label>
+                                    <input type="email" class="input-block-level" aria-label="messages_email" id="messages_email" name="messages[email]" placeholder="Entrer votre adresse mail" data-rule="email" data-msg="Merci de saisir une addresse mail valide" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="span4 form-group">
+                                    <label for="messages_subject" aria-label="messages_subject">Objet </label>
+                                    <input type="text" class="input-block-level" aria-label="messages_subject" id="messages_subject" name="messages[subject]" maxlength="75" placeholder="Saisir l'objet de votre message" data-rule="minlen:4" data-msg="Saisir au moins 8 caract�res pour l'objet de votre message" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="span4 form-group">
+                                    <label for="messages_message" aria-label="messages_message">Message </label>
+                                    <textarea class="input-block-level" aria-label="messages_message" id="messages_message" name="messages[message]" maxlength="255" rows="5" data-rule="required" data-msg="Saisir votre demande ou suggestion" placeholder="Saisir votre demande ou suggestion..."></textarea>
+                                    <div class="validation"></div>
+                                    <div class="text-center">
+
+                                        <input type="hidden" name="token" value="{{ csrf_token('form-messeage') }}" />
+                                        <button class="btn btn-theme" style="color: black" type="submit">Envoyer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </aside>
+                </div>
+
+
+                <div class="span7">
+                    <div class="widget">
+                        <div class="widget">
+
+                     <ul class="social">
+					    <li><a href="https://www.facebook.com/AtypikHouse-107634471531144/" data-placement="bottom" title="Facebook" style="color: black"><i class="fa fa-facebook" style="font-size:20px;color:black"></i>facebook</a></li>
+                        <li><a href="https://www.instagram.com/atypi_khouse" data-placement="bottom" title="Instagram" style="color: black"><i class="fa fa-instagram" style="font-size:20px;color:black"></i>instagram</a></li>
+                        <!--
+						<li><a href="https://twitter.com/home" data-placement="bottom" title="Twitter"><i class="fa fa-twitter" style="font-size:20px;color:black"></i></i></a></li>
+                        <li><a href="https://linkedin.com" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin" style="font-size:20px;color:black"></i></a></li>
+                        <li><a href="https://www.pinterest.com/" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest" style="font-size:20px;color:black"></i></a></li>
+                        <li><a href="https://www.google.fr/" data-placement="bottom" title="Google plus"><i class="fa fa-google" style="font-size:20px;color:black"></i></a></li>
+						-->
+                    </ul>
+                        </div>
+
+                        <h1 class="rheading" > Informations de Contact <span></span></h1>
+                        {{ setting[0].contact |raw }}
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d168377.2468629551!2d2.2239668775453633!3d48.74571238102237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e672976b71e89f%3A0x9be7fd00be074b4c!2sInstitut%20F2I!5e0!3m2!1sfr!2sfr!4v1616756087909!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+

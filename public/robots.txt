@@ -1,0 +1,4 @@
+# www.robotstxt.org/
+
+User-agent: *
+Sitemap: http://localhost:8000/sitemap/sitemap.xml

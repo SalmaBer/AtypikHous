@@ -1,0 +1,77 @@
+{% extends 'page_user.html.twig' %}
+
+{% block title %}{{ app.user.name  }} Profile{% endblock %}
+
+{% block body %}
+    <!-- Subintro
+================================================== -->
+    <section id="subintro">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <ul class="breadcrumb">
+                        <li><a href="/">Profile</a><i class="icon-angle-right"></i></li>
+                        <li class="active">Commentaires</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="maincontent">
+        <div class="container">
+            <div class="row">
+
+                {{ include('user/usermenu.html.twig') }}
+
+                <div class="span9">
+                    <!-- start article 1 -->
+                    <article class="blog-post">
+                        <div class="post-heading">
+                            <h3><a href="#">Les Commentaires</a></h3>
+                        </div>
+                        <div class="row">
+
+
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+
+                                        <th>Objet</th>
+                                        <th>Commentaire</th>
+                                        <th>Hotel</th>
+                                        <th>Rate</th>
+                                        <th>actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for comment in comments %}
+                                        <tr>
+
+                                            <td>{{ comment.subject }}</td>
+                                            <td>{{ comment.comment }}</td>
+                                            <td nowrap><a href="{{ path('hotel_show', {'id': comment.hotelid}) }}">{{ comment.title }}</a></td>
+                                            <td>{{ comment.rate }}</td>
+                                            <td>
+                                                <a href="" class="btn btn-danger">Supprimer</a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="10">Aucun enregistrement trouvé</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+
+                        </div>
+                    </article>
+                    <!-- end article 1 -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

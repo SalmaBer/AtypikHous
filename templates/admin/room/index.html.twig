@@ -1,0 +1,47 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Chambre{% endblock %}
+
+{% block body %}
+    <h1>Chambre</h1>
+   <a  class="btn btn-block btn-primary" href="{{ path('admin_room_new') }}"> Création de Chambre</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Habitat</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Prix</th>
+                <th>Statut</th>
+                <th>Nomber des personne</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>{{ room.id }}</td>
+                <td>{{ room.title }}</td>
+                <td>{{ room.hotelid }}</td>
+                <td>{{ room.description }}</td>
+                <td>{{ room.image }}</td>
+                <td>{{ room.price }}</td>
+                <td>{{ room.status }}</td>
+                <td>{{ room.number }}</td>
+                <td>
+                    <a class="btn btn-block btn-warning" href="{{ path('admin_room_show', {'id': room.id}) }}">consuler</a>
+                    <a class="btn btn-block btn-primary" href="{{ path('admin_room_edit', {'id': room.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Pas resultat</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+ 
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1> Liste reservation </h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"style="color: black;"><a href="/admin" style="color: black;">Accueil</a></li>
+                            <li class="breadcrumb-item active"style="color: black;">Reservation</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="card">
+
+                <div class="card-body ">
+
+                    <table class="table ">
+                        <thead>
+                        <tr>
+
+                            <th>Client</th>
+                            <th>Habitat</th>
+                            <th>Chambre</th>
+                            <th>Nom</th>
+
+                            <th>Date debut</th>
+                            <th>date de sortie</th>
+                            <th>Nomber des Jours</th>
+                            <th>Totale</th>
+
+
+                            <th>Note</th>
+                            <th>Status</th>
+
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for reservation in reservations %}
+                            <tr>
+
+                                <td><a href="{{ path('admin_user_show', {'id': reservation.userid}) }}">
+                                        {% for user in users %} {% if user.id == reservation.userid %} {{ user.name }} {{ user.surname }}   {% endif %} {% endfor %}
+                                    </a>
+                                </td>
+                                {% for hotel in hotels %} {% if hotel.id == reservation.hotelid %}   <td><a href="{{ path('admin_hotel_show', {'id': hotel.id}) }}">
+                                        {{ hotel.title }}
+                                    </a>
+                                </td>   {% endif %} {% endfor %}
+                                <td>
+                                {% for room in rooms %} {% if room.id == reservation.roomid %} {{ room.title }}   {% endif %} {% endfor %}
+                                </td>  <td>{{ reservation.name }}</td>
+
+                                <td>{{ reservation.checkin ? reservation.checkin|date('d-m-y') : '' }}</td>
+                                <td>{{ reservation.checkout ? reservation.checkout|date('d-m-y') : '' }}</td>
+                                <td>{{ reservation.days }}</td>
+                                <td>{{ reservation.total }}</td>
+
+                                <td>{{ reservation.note }}</td>
+                                <td> {% if reservation.status == 'New' %}
+                                        En attend
+                                    {% elseif reservation.status == 'Accepted' %}
+                                        Accepter
+                                    {% elseif reservation.status == 'Cancelled' %}
+                                        Annuler
+                                    {% else %}
+                                        Completer
+                                    {% endif %}</td>
+
+                                <td>
+                                    <a  class="btn btn-block btn-warning" href="{{ path('admin_reservation_show', {'id': reservation.id}) }}">Consulter</a>
+
+                                    <a class="btn btn-block btn-primary" href="{{ path('admin_reservation_edit', {'id': reservation.id}) }}">Modifier</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="19"> Pas Resultat </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <!-- /.card-footer-->
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
